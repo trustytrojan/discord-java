@@ -5,13 +5,14 @@ import java.util.concurrent.CompletableFuture;
 
 import org.json.simple.JSONObject;
 
-import discord.client.Client;
+import discord.client.BaseClient;
+import discord.structures.ClientUser;
 import discord.structures.User;
 
 public class UserManager extends BaseManager {
   public final HashMap<String, User> cache = new HashMap<String, User>();
 
-  public UserManager(Client client) {
+  public UserManager(BaseClient client) {
     super(client);
   }
 
@@ -30,12 +31,12 @@ public class UserManager extends BaseManager {
     });
   }
 
-  public CompletableFuture<User> fetchMe() {
+  public CompletableFuture<ClientUser> fetchMe() {
     return CompletableFuture.supplyAsync(() -> {
       JSONObject data;
       try { data = this.client.api.get("/users/@me"); }
       catch(Exception e) { e.printStackTrace(); return null; }
-      final var me = new User(this.client, data);
+      final var me = new ClientUser(this.client, data);
       this.cache.put(me.id, me);
       return me;
     });

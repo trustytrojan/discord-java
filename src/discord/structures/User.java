@@ -4,7 +4,7 @@ import java.util.concurrent.CompletableFuture;
 
 import org.json.simple.JSONObject;
 
-import discord.client.Client;
+import discord.client.BaseClient;
 
 public class User extends Base {
   public String username;
@@ -12,16 +12,14 @@ public class User extends Base {
   public String avatar;
   public boolean bot;
   public String banner;
+  public String banner_color;
   public int accent_color;
+  public UserProfile profile;
 
-  // properties obtained from /users/{this.id}/profile
-  public String bio;
-
-  public User(Client client, JSONObject data) {
+  public User(BaseClient client, JSONObject data) {
     super(client, data);
-    System.out.println(data);
-    this.username = (String)data.get("username");
-    this.discriminator = (String)data.get("discriminator");
+    this.copyFromJSONObject(data);
+    this.fetchProfile();
   }
 
   public String tag() {
@@ -38,11 +36,23 @@ public class User extends Base {
     });
   }
 
+  public CompletableFuture<UserProfile> fetchProfile() {
+    return CompletableFuture.supplyAsync(() -> {
+      JSONObject data;
+      try { data = this.client.api.get("/users/"+this.id+"/profile"); }
+      catch(Exception e) { e.printStackTrace(); return null; }
+      this.profile = new UserProfile(data);
+      return this.profile;
+    });
+  }
+
   private void copyFromJSONObject(JSONObject data) {
     this.username = (String)data.get("username");
     this.discriminator = (String)data.get("discriminator");
     this.avatar = (String)data.get("avatar");
-    this.bio = (String)data.get("bio");
     this.bot = (boolean)data.get("bot");
+    this.banner = (String)data.get("banner");
+    this.banner_color = (String)data.get("banner_color");
+    this.accent_color = (int)data.get("accent_color");
   }
 }
