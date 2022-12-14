@@ -1,4 +1,4 @@
-import discord.Client;
+import discord.client.Client;
 import io.qt.core.Qt.FocusPolicy;
 import io.qt.widgets.*;
 import io.qt.widgets.QLineEdit.EchoMode;

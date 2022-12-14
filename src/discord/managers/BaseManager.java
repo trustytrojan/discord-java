@@ -1,6 +1,6 @@
 package discord.managers;
 
-import discord.Client;
+import discord.client.Client;
 
 public class BaseManager {
   protected Client client;

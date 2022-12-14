@@ -5,8 +5,8 @@ import java.util.concurrent.CompletableFuture;
 
 import org.json.simple.JSONObject;
 
-import discord.Client;
-import discord.User;
+import discord.client.Client;
+import discord.structures.User;
 
 public class UserManager extends BaseManager {
   public final HashMap<String, User> cache = new HashMap<String, User>();
