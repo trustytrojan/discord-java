@@ -1,11 +1,11 @@
 package discord.managers;
 
-import discord.client.BaseClient;
+import discord.client.Client;
 
 public abstract class BaseManager {
-  protected final BaseClient client;
+  protected final Client client;
 
-  BaseManager(BaseClient client) {
+  BaseManager(Client client) {
     this.client = client;
   }
 }

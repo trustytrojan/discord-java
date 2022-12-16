@@ -4,19 +4,15 @@ import java.util.concurrent.CompletableFuture;
 
 import discord.api.DiscordAPIClient;
 import discord.managers.UserManager;
+import discord.managers.ChannelManager;
 import discord.structures.ClientUser;
 
-public abstract class BaseClient {
+public class Client {
   public final DiscordAPIClient api = new DiscordAPIClient();
   public final UserManager users = new UserManager(this);
-  //public final ChannelManager channel = new ChannelManager(this);
+  public final ChannelManager channels = new ChannelManager(this);
   //public final GuildManager guilds = new GuildManager(this);
-
   public ClientUser user;
-
-  protected BaseClient() {
-
-  }
 
   public CompletableFuture<ClientUser> login(String token) {
     this.api.setToken(token);

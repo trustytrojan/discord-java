@@ -2,13 +2,13 @@ package discord.structures;
 
 import org.json.simple.JSONObject;
 
-import discord.client.BaseClient;
+import discord.client.Client;
 
 public class Base {
   public String id;
-  protected final BaseClient client;
+  protected final Client client;
 
-  protected Base(BaseClient client, JSONObject data) {
+  protected Base(Client client, JSONObject data) {
     this.client = client;
     this.id = (String)data.get("id");
   }

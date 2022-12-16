@@ -15,8 +15,14 @@ public enum ChannelType {
   GuildDirectory, // 14
   GuildForum; // 15
 
-  public static ChannelType correctChannelType(byte type) {
+  public static ChannelType get(final int type) {
     switch(type) {
+      case 0: return GuildText;
+      case 1: return DM;
+      case 2: return GuildVoice;
+      case 3: return GroupDM;
+      case 4: return GuildCategory;
+      case 5: return GuildAnnouncement;
       case 10: return AnnouncementThread;
       case 11: return PublicThread;
       case 12: return PrivateThread;
@@ -27,7 +33,7 @@ public enum ChannelType {
     }
   }
 
-  public static String toString(ChannelType type) {
+  public static String toString(final ChannelType type) {
     switch(type) {
       case GuildText: return "Text Channel";
       case DM: return "DM Channel";
