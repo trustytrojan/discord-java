@@ -8,16 +8,16 @@ import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.concurrent.CompletableFuture;
 
-public class DiscordAPIClient {
+public class APIClient {
   private final HttpClient http_client = HttpClient.newHttpClient();
   private final String base_url = "https://discord.com/api/v10";
   private String token;
 
   private static enum HttpMethod { GET, POST, PUT, PATCH, DELETE };
 
-  public DiscordAPIClient() {}
+  public APIClient() {}
 
-  public DiscordAPIClient(String token) {
+  public APIClient(String token) {
     this.token = token;
   }
 

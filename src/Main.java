@@ -12,4 +12,5 @@ public class Main {
     client.channels.fetchDMs().get();
     System.out.println(client.channels.cache);
   }
+  
 }

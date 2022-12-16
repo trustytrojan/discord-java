@@ -2,13 +2,13 @@ package discord.client;
 
 import java.util.concurrent.CompletableFuture;
 
-import discord.api.DiscordAPIClient;
+import discord.api.APIClient;
 import discord.managers.UserManager;
 import discord.managers.ChannelManager;
 import discord.structures.ClientUser;
 
 public class Client {
-  public final DiscordAPIClient api = new DiscordAPIClient();
+  public final APIClient api = new APIClient();
   public final UserManager users = new UserManager(this);
   public final ChannelManager channels = new ChannelManager(this);
   //public final GuildManager guilds = new GuildManager(this);
