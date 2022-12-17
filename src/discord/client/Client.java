@@ -3,6 +3,7 @@ package discord.client;
 import java.util.concurrent.CompletableFuture;
 
 import discord.api.APIClient;
+//import discord.gateway.GatewayClient;
 import discord.managers.UserManager;
 import discord.managers.ChannelManager;
 import discord.structures.ClientUser;

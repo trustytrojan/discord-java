@@ -1,12 +1,14 @@
 package discord.gateway;
 
 import java.net.URI;
+import java.net.URISyntaxException;
+
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 
 public class GatewayClient extends WebSocketClient {
-  public GatewayClient(URI uri) {
-    super(uri);
+  public GatewayClient(String uri) throws URISyntaxException {
+    super(new URI(uri));
   }
 
   public void onOpen(ServerHandshake handshake) {
